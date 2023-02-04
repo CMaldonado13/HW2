@@ -118,10 +118,42 @@ new_actor = Actor.new
 new_actor.name = "Anne Hathaway"
 new_actor.save
 
+wb = Studio.find_by({"name" => "Warner Bros."})
+new_movie = Movie.new
+new_movie.title = "Batman Begins"
+new_movie.year_released = 2005
+new_movie.rated = "PG-13"
+new_movie.studio_id = wb["id"]
+new_movie.save
+new_movie = Movie.new
+new_movie.title = "The Dark Knight"
+new_movie.year_released = 2008
+new_movie.rated = "PG-13"
+new_movie.studio_id = wb["id"]
+new_movie.save
+new_movie = Movie.new
+new_movie.title = "The Dark Knight Rises"
+new_movie.year_released = 2012
+new_movie.rated = "PG-13"
+new_movie.studio_id = wb["id"]
+new_movie.save
+
+new_role = Role.new
+
+
 # Prints a header for the movies output
 puts "Movies"
 puts "======"
 puts ""
+movie_list = Movie.all
+
+for movie in movie_list
+    title = movie.title
+    year = movie.year_released
+    rating = movie.rated
+    studio = movie.studio_id
+    puts title, year, rating, studio
+end
 puts Studio.all.inspect
 puts Actor.all.inspect
 puts Movie.all.inspect
