@@ -69,21 +69,63 @@
 
 # Delete existing data, so you'll start fresh each time this script is run.
 # Use `Model.destroy_all` code.
-Model.destroy_all
-# TODO!
+Movie.destroy_all
+Actor.destroy_all
+Studio.destroy_all
+Role.destroy_all
+
 
 # Generate models and tables, according to the domain model.
-# TODO!
+
 
 # Insert data into the database that reflects the sample data shown above.
 # Do not use hard-coded foreign key IDs.
-# TODO!
+new_studio = Studio.new
+new_studio.name = "Warner Bros."
+new_studio.save
+
+new_actor = Actor.new
+new_actor.name = "Christian Bale"
+new_actor.save
+new_actor = Actor.new
+new_actor.name = "Michael Caine"
+new_actor.save
+new_actor = Actor.new
+new_actor.name = "Liam Neeson"
+new_actor.save
+new_actor = Actor.new
+new_actor.name = "Katie Holmes"
+new_actor.save
+new_actor = Actor.new
+new_actor.name = "Gary Oldman"
+new_actor.save
+new_actor = Actor.new
+new_actor.name = "Heath Ledger"
+new_actor.save
+new_actor = Actor.new
+new_actor.name = "Aaron Eckhart"
+new_actor.save
+new_actor = Actor.new
+new_actor.name = "Maggie Gyllenhaal"
+new_actor.save
+new_actor = Actor.new
+new_actor.name = "Tom Hardy"
+new_actor.save
+new_actor = Actor.new
+new_actor.name = "Joseph Gordon-Levitt"
+new_actor.save
+new_actor = Actor.new
+new_actor.name = "Anne Hathaway"
+new_actor.save
 
 # Prints a header for the movies output
 puts "Movies"
 puts "======"
 puts ""
-
+puts Studio.all.inspect
+puts Actor.all.inspect
+puts Movie.all.inspect
+puts Role.all.inspect
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
