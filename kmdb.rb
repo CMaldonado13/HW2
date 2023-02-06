@@ -138,6 +138,10 @@ new_movie.rated = "PG-13"
 new_movie.studio_id = wb["id"]
 new_movie.save
 
+bb = Movie.find_by({"title" => "Batman Begins"})
+tdk = Movie.find_by({"title" => "The Dark Knight"})
+tdkr = Movie.find_by({"title" => "The Dark Knight Rises"})
+
 new_role = Role.new
 
 
@@ -147,12 +151,14 @@ puts "======"
 puts ""
 movie_list = Movie.all
 
+
 for movie in movie_list
     title = movie.title
     year = movie.year_released
     rating = movie.rated
-    studio = movie.studio_id
-    puts title, year, rating, studio
+    studio = Studio.find_by({"id" => movie["studio_id"]})
+    studio_name = studio.name
+    puts "#{title.ljust(25)} #{year}  #{rating} #{studio_name}"
 end
 puts Studio.all.inspect
 puts Actor.all.inspect
