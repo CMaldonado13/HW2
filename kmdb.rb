@@ -248,8 +248,12 @@ new_role.save
 puts "Movies"
 puts "======"
 puts ""
-movie_list = Movie.all
 
+
+
+# Query the movies data and loop through the results to display the movies output.
+# TODO!
+movie_list = Movie.all
 
 for movie in movie_list
     title = movie.title
@@ -260,17 +264,16 @@ for movie in movie_list
     puts "#{title.ljust(25)} #{year}  #{rating} #{studio_name}"
 end
 
-# Query the movies data and loop through the results to display the movies output.
-# TODO!
-
 # Prints a header for the cast output
 puts ""
 puts "Top Cast"
 puts "========"
 puts ""
 
-role_list = Role.all
 
+# Query the cast data and loop through the results to display the cast output for each movie.
+# TODO!
+role_list = Role.all
 
 for role in role_list.order("movie_id", "rank")
     movie = Movie.find_by({"id" => role.movie_id})
@@ -280,5 +283,3 @@ for role in role_list.order("movie_id", "rank")
     role_name = role.character_name
     puts "#{movie_title.ljust(25)} #{actor_name.ljust(20)}  #{role_name}"
 end
-# Query the cast data and loop through the results to display the cast output for each movie.
-# TODO!
