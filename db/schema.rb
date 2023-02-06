@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_04_191605) do
     t.integer "movie_id"
     t.integer "actor_id"
     t.string "character_name"
+    t.integer "rank"
   end
 
   create_table "studios", force: :cascade do |t|

@@ -84,40 +84,6 @@ new_studio = Studio.new
 new_studio.name = "Warner Bros."
 new_studio.save
 
-new_actor = Actor.new
-new_actor.name = "Christian Bale"
-new_actor.save
-new_actor = Actor.new
-new_actor.name = "Michael Caine"
-new_actor.save
-new_actor = Actor.new
-new_actor.name = "Liam Neeson"
-new_actor.save
-new_actor = Actor.new
-new_actor.name = "Katie Holmes"
-new_actor.save
-new_actor = Actor.new
-new_actor.name = "Gary Oldman"
-new_actor.save
-new_actor = Actor.new
-new_actor.name = "Heath Ledger"
-new_actor.save
-new_actor = Actor.new
-new_actor.name = "Aaron Eckhart"
-new_actor.save
-new_actor = Actor.new
-new_actor.name = "Maggie Gyllenhaal"
-new_actor.save
-new_actor = Actor.new
-new_actor.name = "Tom Hardy"
-new_actor.save
-new_actor = Actor.new
-new_actor.name = "Joseph Gordon-Levitt"
-new_actor.save
-new_actor = Actor.new
-new_actor.name = "Anne Hathaway"
-new_actor.save
-
 wb = Studio.find_by({"name" => "Warner Bros."})
 new_movie = Movie.new
 new_movie.title = "Batman Begins"
@@ -142,7 +108,140 @@ bb = Movie.find_by({"title" => "Batman Begins"})
 tdk = Movie.find_by({"title" => "The Dark Knight"})
 tdkr = Movie.find_by({"title" => "The Dark Knight Rises"})
 
+new_actor = Actor.new
+new_actor.name = "Christian Bale"
+new_actor.save
 new_role = Role.new
+new_role.movie_id = bb.id
+new_role.actor_id = new_actor.id
+new_role.character_name = "Bruce Wayne"
+new_role.rank = 1
+new_role.save
+new_role = Role.new
+new_role.movie_id = tdk.id
+new_role.actor_id = new_actor.id
+new_role.character_name = "Bruce Wayne"
+new_role.rank = 1
+new_role.save
+new_role = Role.new
+new_role.movie_id = tdkr.id
+new_role.actor_id = new_actor.id
+new_role.character_name = "Bruce Wayne"
+new_role.rank = 1
+new_role.save
+
+new_actor = Actor.new
+new_actor.name = "Michael Caine"
+new_actor.save
+new_role = Role.new
+new_role.movie_id = bb.id
+new_role.actor_id = new_actor.id
+new_role.character_name = "Alfred"
+new_role.rank = 2
+new_role.save
+new_role = Role.new
+new_role.movie_id = tdk.id
+new_role.actor_id = new_actor.id
+new_role.character_name = "Alfred"
+new_role.rank = 4
+new_role.save
+
+new_actor = Actor.new
+new_actor.name = "Liam Neeson"
+new_actor.save
+new_role=Role.new
+new_role.movie_id = bb.id
+new_role.actor_id = new_actor.id
+new_role.character_name = "Ra's Al Ghul"
+new_role.rank = 3
+new_role.save
+
+new_actor = Actor.new
+new_actor.name = "Katie Holmes"
+new_actor.save
+new_role=Role.new
+new_role.movie_id = bb.id
+new_role.actor_id = new_actor.id
+new_role.character_name = "Rachel Dawes"
+new_role.rank = 4
+new_role.save
+
+new_actor = Actor.new
+new_actor.name = "Gary Oldman"
+new_actor.save
+new_role=Role.new
+new_role.movie_id = bb.id
+new_role.actor_id = new_actor.id
+new_role.character_name = "Commissioner Gordon"
+new_role.rank = 5
+new_role.save
+new_role=Role.new
+new_role.movie_id = tdkr.id
+new_role.actor_id = new_actor.id
+new_role.character_name = "Commissioner Gordon"
+new_role.rank = 2
+new_role.save
+
+new_actor = Actor.new
+new_actor.name = "Heath Ledger"
+new_actor.save
+new_role=Role.new
+new_role.movie_id = tdk.id
+new_role.actor_id = new_actor.id
+new_role.character_name = "Joker"
+new_role.rank = 2
+new_role.save
+
+new_actor = Actor.new
+new_actor.name = "Aaron Eckhart"
+new_actor.save
+new_role=Role.new
+new_role.movie_id = tdk.id
+new_role.actor_id = new_actor.id
+new_role.character_name = "Harvey Dent"
+new_role.rank = 3
+new_role.save
+
+new_actor = Actor.new
+new_actor.name = "Maggie Gyllenhaal"
+new_actor.save
+new_role=Role.new
+new_role.movie_id = tdk.id
+new_role.actor_id = new_actor.id
+new_role.character_name = "Rachel Dawes"
+new_role.rank = 5
+new_role.save
+
+new_actor = Actor.new
+new_actor.name = "Tom Hardy"
+new_actor.save
+new_role=Role.new
+new_role.movie_id = tdkr.id
+new_role.actor_id = new_actor.id
+new_role.character_name = "Bane"
+new_role.rank = 3
+new_role.save
+
+new_actor = Actor.new
+new_actor.name = "Joseph Gordon-Levitt"
+new_actor.save
+new_role=Role.new
+new_role.movie_id = tdkr.id
+new_role.actor_id = new_actor.id
+new_role.character_name = "John Blake"
+new_role.rank = 4
+new_role.save
+
+new_actor = Actor.new
+new_actor.name = "Anne Hathaway"
+new_actor.save
+new_role=Role.new
+new_role.movie_id = tdkr.id
+new_role.actor_id = new_actor.id
+new_role.character_name = "Selina Kyle"
+new_role.rank = 5
+new_role.save
+
 
 
 # Prints a header for the movies output
@@ -160,10 +259,7 @@ for movie in movie_list
     studio_name = studio.name
     puts "#{title.ljust(25)} #{year}  #{rating} #{studio_name}"
 end
-puts Studio.all.inspect
-puts Actor.all.inspect
-puts Movie.all.inspect
-puts Role.all.inspect
+
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
@@ -173,5 +269,16 @@ puts "Top Cast"
 puts "========"
 puts ""
 
+role_list = Role.all
+
+
+for role in role_list.order("movie_id", "rank")
+    movie = Movie.find_by({"id" => role.movie_id})
+    movie_title = movie.title
+    actor = Actor.find_by({"id" => role.actor_id})
+    actor_name = actor.name
+    role_name = role.character_name
+    puts "#{movie_title.ljust(25)} #{actor_name.ljust(20)}  #{role_name}"
+end
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
